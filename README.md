@@ -1,3 +1,199 @@
+# <p align="center"> **Unit-3: Subsetting and Data Manipulation in R** </p>
+
+### 1. What is Data Analysis?
+Data analysis is the process of inspecting, cleaning, transforming, and modeling data with the goal of discovering useful information, drawing conclusions, and supporting decision-making. It involves various techniques and tools to extract meaningful patterns and insights from raw data, helping organizations to make data-driven decisions.
+
+---
+
+### 2. What is Statistical Data Analysis?
+Statistical data analysis refers to the process of collecting, reviewing, analyzing, and drawing conclusions from data using statistical methods. This includes measures of central tendency (mean, median, mode), variability (standard deviation, variance), correlations, regressions, and hypothesis testing. The goal is to understand the data and its underlying patterns, relationships, and significance.
+
+---
+
+### 3. How R is Useful in Data Analysis and Statistical Analysis of Data?
+R is a powerful language and environment for statistical computing and graphics. It provides a wide range of statistical and graphical techniques that make it useful for both data analysis and statistical analysis:
+- **Data manipulation**: It allows easy manipulation of data with packages like `dplyr` and `tidyr`.
+- **Visualization**: R has powerful tools for creating visualizations such as histograms, scatter plots, and box plots using `ggplot2`.
+- **Statistical techniques**: R supports a wide variety of statistical techniques like linear regression, hypothesis testing, time series analysis, and more.
+- **Reproducibility**: R allows you to create reproducible reports using RMarkdown.
+
+---
+
+### 4. Basic commands of R
+Here is another explanation of basic R commands:
+
+1. **Assignment**:
+   - You assign values to variables using the `<-` operator or `=`:
+     ```R
+     x <- 10   # assigns 10 to x
+     y = 20    # assigns 20 to y
+     ```
+
+2. **Basic Arithmetic Operations**:
+   - Arithmetic operations are performed using symbols:
+     ```R
+     sum_result <- 5 + 3      # Addition
+     diff_result <- 10 - 4    # Subtraction
+     prod_result <- 6 * 7    # Multiplication
+     div_result <- 20 / 4    # Division
+     power_result <- 2^3    # Exponentiation
+     ```
+
+3. **Creating Vectors**:
+   - Vectors can be created using the `c()` function:
+     ```R
+     numbers <- c(1, 2, 3, 4, 5)   # A vector of numbers
+     ```
+
+4. **Accessing Vector Elements**:
+   - You can access individual elements of a vector using square brackets:
+     ```R
+     numbers[1]   # Accesses the first element (1)
+     ```
+
+5. **Basic Functions**:
+   - R has a set of built-in functions for common operations:
+     ```R
+     sum_value <- sum(c(1, 2, 3))    # Sum of elements
+     mean_value <- mean(c(10, 20, 30)) # Mean of elements
+     sd_value <- sd(c(10, 20, 30))    # Standard deviation
+     ```
+
+6. **Creating Data Frames**:
+   - Data frames store data in a tabular format (rows and columns). You can create one like this:
+     ```R
+     df <- data.frame(Name = c("Alice", "Bob"),
+                      Age = c(25, 30))
+     ```
+
+7. **Accessing Data Frame Elements**:
+   - Access columns using the `$` operator:
+     ```R
+     df$Name   # Accesses the Name column
+     df[1,]    # Accesses the first row
+     df[,2]    # Accesses the second column (Age)
+     ```
+
+8. **Control Structures**:
+   - R supports `if`, `else`, and `for` loops:
+     ```R
+     # if-else statement
+     if (x > 5) {
+       print("Greater than 5")
+     } else {
+       print("Less than or equal to 5")
+     }
+     
+     # for loop
+     for (i in 1:3) {
+       print(i)
+     }
+     ```
+
+9. **Functions in R**:
+   - You can define your own functions using the `function` keyword:
+     ```R
+     square <- function(x) {
+       return(x^2)
+     }
+     square(4)   # Returns 16
+     ```
+
+10. **Basic Plotting**:
+    - You can create simple plots using `plot()`:
+      ```R
+      plot(1:10)   # Plots numbers from 1 to 10
+      ```
+
+11. **Loading External Libraries**:
+    - R allows you to install and load external libraries for extended functionality:
+      ```R
+      install.packages("ggplot2")   # Install a package
+      library(ggplot2)              # Load the package
+      ```
+
+These are some of the basic commands and functionalities in R. R is a powerful tool for data analysis and statistical computing, offering a wide range of commands for manipulating, analyzing, and visualizing data.
+  
+---
+
+### 5. How to use the `cut()` function? Explain with an example.
+The `cut()` function in R is used to divide a continuous variable into discrete intervals or categories. It's useful when you want to group continuous data into factors.
+
+#### Example:
+```r
+# Creating a vector of numbers
+ages <- c(25, 30, 35, 40, 45, 50, 55, 60, 65)
+
+# Using cut() to create age groups
+age_groups <- cut(ages, breaks = c(20, 30, 40, 50, 60, 70), labels = c("20-30", "30-40", "40-50", "50-60", "60-70"))
+
+# Display the result
+print(age_groups)
+```
+This divides the ages into 5 groups: 20-30, 30-40, etc.
+
+---
+
+### 6. Create a CSV containing around 20 records using R/Python code.
+Here’s an R example to create a CSV with 20 records:
+```r
+# Create a data frame with 20 records
+data <- data.frame(
+  ID = 1:20,
+  Name = c("Alice", "Bob", "Charlie", "David", "Eva", "Frank", "Grace", "Hannah", "Ivy", "Jack", 
+           "Kim", "Liam", "Mona", "Nancy", "Oscar", "Paul", "Quincy", "Rita", "Sam", "Tina"),
+  Age = sample(18:60, 20, replace = TRUE),
+  Score = sample(50:100, 20, replace = TRUE)
+)
+
+# Write the data to a CSV file
+write.csv(data, "data.csv", row.names = FALSE)
+```
+This creates a CSV file with columns `ID`, `Name`, `Age`, and `Score`.
+
+---
+
+### 7. Write an R code to read records from the CSV file in a folder on your desktop and display the records one by one.
+Here’s how you can read and display records from a CSV file:
+```r
+# Set the path to the CSV file
+file_path <- "C:/Users/YourUsername/Desktop/data.csv"
+
+# Read the CSV file into a data frame
+data <- read.csv(file_path)
+
+# Loop through the rows and print them
+for (i in 1:nrow(data)) {
+  print(data[i, ])
+}
+```
+Make sure to replace `"C:/Users/YourUsername/Desktop/data.csv"` with the actual path to your CSV file.
+
+---
+
+### 8. Explain Data Filtering and Data Cleaning, giving appropriate examples.
+- **Data Filtering**: Data filtering is the process of selecting a subset of data based on certain conditions or criteria.
+  - Example: If you have a dataset of ages and want to filter out those older than 40, you can do:
+    ```r
+    filtered_data <- data[data$Age > 40, ]
+    print(filtered_data)
+    ```
+  
+- **Data Cleaning**: Data cleaning involves identifying and rectifying errors or inconsistencies in the dataset, such as missing values, incorrect entries, or duplicates.
+  - Example: If a dataset has missing values in the `Age` column, you can clean it by removing rows with missing values:
+    ```r
+    cleaned_data <- na.omit(data)
+    print(cleaned_data)
+    ```
+
+Data cleaning might also include correcting spelling errors, handling outliers, or standardizing formats.
+
+---
+
+<br>
+<br>
+<br>
+
 # <p align="center"> **Unit-4: Subsetting and Data Manipulation in R** </p>
 
 
